@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  app-dev:
+    image: denoland/deno:1.42.1
+    environment:
+      SEQUELIZE_URL: postgres://postgres:abc123@db-dev:5432/postgres
+      NODE_ENV: dev
+    links:
+      - db-dev
+    ports:
+      - "4000:4000"
+    volumes:
+      - ../..:/workspaces:cached
+
+  db-dev:
+    image: postgres
+    restart: always
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    #volumes:
+    #  - type: tmpfs
+    #    target: /dev/shm
+    #    tmpfs:
+    #      size: 134217728 # 128*2^20 bytes = 128Mb
+    environment:
+      POSTGRES_PASSWORD: abc123

@@ -1,0 +1,23 @@
+{
+  "name": "Deno",
+  "dockerComposeFile": "docker-compose-dev.yml",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  // Add the IDs of extensions you want installed when the container is created.
+  "customizations": {
+    "vscode": {
+      "extensions": ["denoland.vscode-deno", "ms-azuretools.vscode-docker"]
+    }
+  },
+  "service": "app-dev",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "overrideCommand": true
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+
+  // Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
+  // "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
+}

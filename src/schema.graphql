@@ -1,0 +1,46 @@
+scalar DateTime
+
+# Ferry Ticket Counts
+enum FerryTicketCountDateFilter {
+  DAY
+  WEEK
+  MONTH
+  YEAR
+}
+type FerryTicketCount {
+  date: String!
+  redemptionCount: Int!
+  salesCount: Int!
+}
+
+# Bike Share
+type BikeShareStationTrend {
+  date: String!
+  numBikesAvailableMechanical: Int
+  numBikesAvailableEbike: Int
+  numBikesDisabled: Int
+  numDocksAvailable: Int
+  numDocksDisabled: Int
+}
+
+type BikeShareStation {
+  id: String!
+  name: String!
+  lat: Float!
+  lon: Float!
+  address: String
+  lastReported: Int
+  status: String
+  numBikesAvailableMechanical: Int
+  numBikesAvailableEbike: Int
+  numBikesDisabled: Int
+  numDocksAvailable: Int
+  numDocksDisabled: Int
+  isChargingStation: Boolean
+}
+
+type Query {
+  ferryTicketCounts(filter: FerryTicketCountDateFilter!): [FerryTicketCount!]!
+  bikeShareStations: [BikeShareStation!]!
+  bikeStationTrends(id: String!): [BikeShareStationTrend!]!
+}
