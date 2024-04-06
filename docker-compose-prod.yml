@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   app-prod:
-    image: ligary/garyli.dev:latest
+    image: ligary/garyli.dev:howstoronto
     environment:
       SEQUELIZE_URL: postgres://postgres:abc123@db-prod:5432/postgres
       NODE_ENV: production
