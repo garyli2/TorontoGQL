@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "codegen": "graphql-codegen --config codegen.ts",
-    "prod": "docker build -t ligary/garyli.dev:howstoronto . && docker compose -f docker-compose-prod.yml up",
-    "push-prod": "docker push ligary/garyli.dev:howstoronto"
+    "prod": "docker build -t ligary/garyli.dev:TorontoGQL . && docker push ligary/garyli.dev:TorontoGQL"
   },
   "keywords": [],
   "author": "",

@@ -2,15 +2,19 @@ version: "3.9"
 
 services:
   app-prod:
-    image: ligary/garyli.dev:howstoronto
+    image: ligary/garyli.dev:TorontoGQL
+    pull_policy: always
     environment:
       SEQUELIZE_URL: postgres://postgres:abc123@db-prod:5432/postgres
       NODE_ENV: production
+      APOLLO_PORT: 443
     links:
       - db-prod
+    volumes:
+      - /etc/letsencrypt:/ssl
     ports:
-      - "4000:4000"
-    
+      - "443:443"
+
   db-prod:
     image: postgres
     restart: always
