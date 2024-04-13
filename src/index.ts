@@ -10,6 +10,7 @@ import { Resolvers } from "./generated/graphql.ts";
 import ferryTicketCounts from "./resolvers/ferry-ticket-counts.ts";
 import bikeShareStations from "./resolvers/bike-share.ts";
 import bikeStationTrends from "./resolvers/bike-station-trends.ts";
+import { startBikeShareAggregator } from "./aggregator/bike-share-aggregator.ts";
 
 const configurations = {
   production: { ssl: true, port: 443, hostname: "graphql.howstoronto.ca" },
@@ -77,3 +78,5 @@ console.log(
   "🚀 Server ready at",
   `http${config.ssl ? "s" : ""}://${config.hostname}:${config.port}/`,
 );
+
+startBikeShareAggregator();
